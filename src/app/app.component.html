@@ -1,0 +1,23 @@
+<nav class="navbar navbar-inverse fixed-top bg-inverse navbar-toggleable-md">
+  <button class="navbar-toggler navbar-toggler-right" (click)="toggleSidebar()">
+      <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="#">UQO Annotator</a>
+  <a class="nav-item" routerLink="/corpora" routerLinkActive="active">Corpora</a>
+  <a class="nav-item" routerLink="/heroes" routerLinkActive="active">Heroes</a>
+  <a class="nav-item" routerLink="/admin" routerLinkActive="active">Admin</a>
+  <ul class="nav navbar-nav  ml-auto">
+    <li>
+      <a class="nav-item" routerLink="/login" routerLinkActive="active">Login</a>
+    </li>
+    <li>
+      <a class="nav-item" [routerLink]="[{ outlets: { popup: ['compose'] } }]">Contact</a>
+    </li>
+    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+  </ul>
+</nav>
+<div style="height:70px"></div>
+<router-outlet></router-outlet>
+<router-outlet name="popup"></router-outlet>
+
+
