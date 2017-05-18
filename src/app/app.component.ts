@@ -16,6 +16,9 @@ export class AppComponent {
         const browserLang = translate.getBrowserLang();
         translate.use(browserLang.match(/en|fr|ur/) ? browserLang : 'en');
     }
-
+    toggleSidebar() {
+        const dom: any = document.querySelector('body');
+        dom.classList.toggle('push-right');
+    }
 }
 
