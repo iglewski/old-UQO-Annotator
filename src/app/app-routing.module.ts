@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { ComposeMessageComponent }  from './compose-message.component';
 import { PageNotFoundComponent }    from './not-found.component';
+import { MainComponent }            from './main.component';
 
 import { CanDeactivateGuard }       from './can-deactivate-guard.service';
 import { AuthGuard }                from './auth-guard.service';
@@ -24,7 +25,8 @@ const appRoutes: Routes = [
     loadChildren: 'app/corpora/corpora.module#CorporaModule',
     data: { preload: true }
   },
-  { path: '',   redirectTo: '/heroes', pathMatch: 'full' },
+  { path: 'heroes',   redirectTo: '/heroes' },
+  { path: '',   component: MainComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 

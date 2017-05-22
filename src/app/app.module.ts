@@ -16,6 +16,7 @@ import { AuthGuard } from './shared';
 
 import { HeroesModule }            from './heroes/heroes.module';
 import { ComposeMessageComponent } from './compose-message.component';
+import { MainComponent }           from './main.component';
 import { PageNotFoundComponent }   from './not-found.component';
 import { DialogService }           from './dialog.service';
 
@@ -28,6 +29,7 @@ export function HttpLoaderFactory(http: Http) {
   declarations: [
     AppComponent,
     ComposeMessageComponent,
+    MainComponent,
     PageNotFoundComponent
   ],
   imports: [
