@@ -27,6 +27,7 @@ import { fakeBackendProvider } from './_helpers/index';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { BaseRequestOptions } from '@angular/http';
 import { HeaderComponent } from './shared';
+import { RegisterComponent } from './register/index';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: Http) {
@@ -40,7 +41,8 @@ export function HttpLoaderFactory(http: Http) {
     ComposeMessageComponent,
     PageNotFoundComponent,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
