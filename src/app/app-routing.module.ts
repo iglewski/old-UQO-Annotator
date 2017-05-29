@@ -5,20 +5,25 @@ import { ComposeMessageComponent }  from './compose-message.component';
 import { PageNotFoundComponent }    from './not-found.component';
 
 import { CanDeactivateGuard }       from './can-deactivate-guard.service';
-import { AuthGuard }                from './auth-guard.service';
+//import { AuthGuard }                from './auth-guard.service';
 import { SelectivePreloadingStrategy } from './selective-preloading-strategy';
 import { LoginComponent } from './login/index';
+import { HomeComponent } from './home/index';
+import { AuthGuard } from './_guards/index';
+
 const appRoutes: Routes = [
   {
     path: 'compose',
     component: ComposeMessageComponent,
     outlet: 'popup'
-  },{ path: 'login', component: LoginComponent },
-  {
-    path: 'admin',
-    loadChildren: 'app/admin/admin.module#AdminModule',
-    canLoad: [AuthGuard]
   },
+  { path: 'login', component: LoginComponent },
+  { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+  //{
+  //  path: 'admin',
+  //  loadChildren: 'app/admin/admin.module#AdminModule',
+  //  canLoad: [AuthGuard]
+  //},
   {
     path: 'corpora',
     loadChildren: 'app/corpora/corpora.module#CorporaModule',
