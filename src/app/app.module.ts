@@ -19,6 +19,7 @@ import { ComposeMessageComponent } from './compose-message.component';
 import { MainComponent }           from './main.component';
 import { PageNotFoundComponent }   from './not-found.component';
 import { DialogService }           from './dialog.service';
+import { LoginComponent } from './login/index';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: Http) {
@@ -28,6 +29,7 @@ export function HttpLoaderFactory(http: Http) {
 @NgModule({
   declarations: [
     AppComponent,
+    LoginComponent,
     ComposeMessageComponent,
     MainComponent,
     PageNotFoundComponent

@@ -6,6 +6,7 @@ import { PageNotFoundComponent }    from './not-found.component';
 import { MainComponent }            from './main.component';
 
 import { CanDeactivateGuard }       from './can-deactivate-guard.service';
+import { LoginComponent } from './login/index';
 import { AuthGuard }                from './auth-guard.service';
 import { SelectivePreloadingStrategy } from './selective-preloading-strategy';
 
@@ -14,6 +15,9 @@ const appRoutes: Routes = [
     path: 'compose',
     component: ComposeMessageComponent,
     outlet: 'popup'
+  },
+  { path: 'login',
+    component: LoginComponent
   },
   {
     path: 'admin',
