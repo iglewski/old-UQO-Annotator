@@ -6,9 +6,10 @@ import { PageNotFoundComponent }    from './not-found.component';
 import { MainComponent }            from './main.component';
 
 import { CanDeactivateGuard }       from './can-deactivate-guard.service';
-import { LoginComponent } from './login/index';
+import { LoginComponent }           from './login/index';
 import { AuthGuard }                from './auth-guard.service';
 import { SelectivePreloadingStrategy } from './selective-preloading-strategy';
+import { RegisterComponent }        from './register/index';
 
 const appRoutes: Routes = [
   {
@@ -18,6 +19,9 @@ const appRoutes: Routes = [
   },
   { path: 'login',
     component: LoginComponent
+  },
+  { path: 'register',
+    component: RegisterComponent
   },
   {
     path: 'admin',
@@ -30,8 +34,12 @@ const appRoutes: Routes = [
     data: { preload: true }
   },
   { path: 'heroes',   redirectTo: '/heroes' },
-  { path: '',   component: MainComponent },
-  { path: '**', component: PageNotFoundComponent }
+  { path: '',
+    component: MainComponent
+  },
+  { path: '**',
+    component: PageNotFoundComponent
+  }
 ];
 
 @NgModule({

@@ -19,7 +19,9 @@ import { ComposeMessageComponent } from './compose-message.component';
 import { MainComponent }           from './main.component';
 import { PageNotFoundComponent }   from './not-found.component';
 import { DialogService }           from './dialog.service';
-import { LoginComponent } from './login/index';
+import { LoginComponent }          from './login/index';
+import { HeaderComponent }         from './shared';
+import { RegisterComponent }       from './register/index';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: Http) {
@@ -32,7 +34,9 @@ export function HttpLoaderFactory(http: Http) {
     LoginComponent,
     ComposeMessageComponent,
     MainComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    HeaderComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
