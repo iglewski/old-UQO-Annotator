@@ -18,7 +18,7 @@
 .navbar {
   position: relative;
   display: flex;
-  flex-direction: column;
+  //flex-direction: column;
   padding: $navbar-padding-y $navbar-padding-x;
 }
 
@@ -29,7 +29,7 @@
 
 .navbar-brand {
   display: inline-block;
-  padding-top: .25rem;
+  //padding-top: .25rem;
   padding-bottom: .25rem;
   margin-right: $navbar-padding-x;
   font-size: $font-size-lg;
@@ -48,7 +48,7 @@
 
 .navbar-nav {
   display: flex;
-  flex-direction: column; // cannot use `inherit` to get the `.navbar`s value
+  //flex-direction: column; // cannot use `inherit` to get the `.navbar`s value
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
