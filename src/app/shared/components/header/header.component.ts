@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
+import { ROUTES } from './header-routes.config';
+import { MenuType } from './header.metadata';
 
 @Component({
     selector: 'app-header',
@@ -8,10 +10,23 @@ import {TranslateService} from '@ngx-translate/core';
     
 })
 export class HeaderComponent implements OnInit {
-
+    public leftMenus: any[];
+    public rightMenus: any[];
+    public rightMenuOutlets: any[];
+    isCollapsed = true;
     constructor(private translate: TranslateService) { }
 
-    ngOnInit() {}
+    ngOnInit() {
+        this.leftMenus = ROUTES.filter(menuItem => menuItem.menuType === MenuType.LEFT);
+        this.rightMenus = ROUTES.filter(menuItem => menuItem.menuType === MenuType.RIGHT);
+        this.rightMenuOutlets = ROUTES.filter(menuItem => menuItem.menuType === MenuType.OUTLETRIGHT);
+    }
+
+    public getMenuItemClasses(menuItem: any) {
+    return {
+      'pull-xs-right': this.isCollapsed && menuItem.menuType === MenuType.LEFT
+        };
+    }
 
     toggleSidebar() {
         const dom: any = document.querySelector('body');

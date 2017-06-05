@@ -18,7 +18,7 @@
 .navbar {
   position: relative;
   display: flex;
-  //flex-direction: column;
+  flex-direction: column;
   padding: $navbar-padding-y $navbar-padding-x;
 }
 
@@ -47,12 +47,11 @@
 // Custom navbar navigation (doesn't require `.nav`, but does make use of `.nav-link`).
 
 .navbar-nav {
-  display: flex;
-  //flex-direction: column; // cannot use `inherit` to get the `.navbar`s value
+  display: inherit;
+  flex-direction: column; // cannot use `inherit` to get the `.navbar`s value
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
-
   .nav-link {
     padding-right: 0;
     padding-left: 0;
