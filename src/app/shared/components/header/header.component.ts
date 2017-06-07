@@ -3,6 +3,7 @@ import {TranslateService} from '@ngx-translate/core';
 import { ROUTES } from './header-routes.config';
 import { MenuType } from './header.metadata';
 
+
 @Component({
     selector: 'app-header',
     templateUrl: './header.component.html',
