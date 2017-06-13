@@ -3,7 +3,7 @@ $topnav-background-color: #222;
     display: block;
 }
 .login-page {
-    position: absolute;
+    position: center;
     top: 0;
     left: 0;
     right: 0;
@@ -11,11 +11,13 @@ $topnav-background-color: #222;
     overflow: auto;
     text-align: center;
     padding: 3em;
-    .col-lg-4{
+    margin: auto;
+    width:40%;
+    .col-md-4{
         padding :0;
     }
     .input-lg {
-        height: 46px;
+        width: 46px;
         padding: 10px 16px;
         font-size: 18px;
         line-height: 1.3333333;
