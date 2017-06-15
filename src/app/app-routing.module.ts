@@ -3,13 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { ComposeMessageComponent }  from './compose-message.component';
 import { PageNotFoundComponent }    from './not-found.component';
-import { MainComponent }            from './main.component';
 
-import { CanDeactivateGuard }       from './can-deactivate-guard.service';
-import { LoginComponent }           from './login/index';
-import { AuthGuard }                from './auth-guard.service';
+import { CanDeactivateGuard }          from './can-deactivate-guard.service';
 import { SelectivePreloadingStrategy } from './selective-preloading-strategy';
-import { RegisterComponent }        from './register/index';
+import { LoginComponent }              from './login/index';
+import { HomeComponent }               from './home/index';
+import { AuthGuard }                   from './_guards/index';
+import { RegisterComponent }           from './register/index';
 
 const appRoutes: Routes = [
   {
@@ -23,10 +23,15 @@ const appRoutes: Routes = [
   { path: 'register',
     component: RegisterComponent
   },
+  { path: '',
+    component: HomeComponent,
+    canActivate: [AuthGuard]
+  },
   {
     path: 'admin',
-    loadChildren: 'app/admin/admin.module#AdminModule',
-    canLoad: [AuthGuard]
+    component: PageNotFoundComponent,
+    //loadChildren: 'app/admin/admin.module#AdminModule',
+    //canLoad: [AuthGuard]
   },
   {
     path: 'corpora',
@@ -35,7 +40,7 @@ const appRoutes: Routes = [
   },
   { path: 'heroes',   redirectTo: '/heroes' },
   { path: '',
-    component: MainComponent
+    component: HomeComponent
   },
   { path: '**',
     component: PageNotFoundComponent
