@@ -38,9 +38,8 @@ const appRoutes: Routes = [
     loadChildren: 'app/corpora/corpora.module#CorporaModule',
     data: { preload: true }
   },
-  { path: 'heroes',   redirectTo: '/heroes' },
-  { path: '',
-    component: HomeComponent
+  { path: 'heroes',
+    redirectTo: '/heroes'
   },
   { path: '**',
     component: PageNotFoundComponent
