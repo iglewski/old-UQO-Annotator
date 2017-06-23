@@ -5,7 +5,10 @@
 /tmp
 /out-tsc
 /src/app/**/*.js
-/src/app/**/*.map
+/src/**/*.map
+# /src/main.js
+/src/test.js
+/src/polyfills.js
 
 # dependencies
 /node_modules
