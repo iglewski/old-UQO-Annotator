@@ -11,8 +11,8 @@ export class UserService {
         return this.http.get('/users').map((response: Response) => response.json());
     }
  
-    getById(_id: string) {
-        return this.http.get('/users/' + _id).map((response: Response) => response.json());
+    getById(id: string) {
+        return this.http.get('/users/' + id).map((response: Response) => response.json());
     }
  
     create(user: User) {
@@ -20,10 +20,10 @@ export class UserService {
     }
  
     update(user: User) {
-        return this.http.put('/users/' + user._id, user);
+        return this.http.put('/users/' + user.id, user);
     }
  
-    delete(_id: string) {
-        return this.http.delete('/users/' + _id);
+    delete(id: string) {
+        return this.http.delete('/users/' + id);
     }
 }
