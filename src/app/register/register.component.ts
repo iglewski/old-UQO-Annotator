@@ -15,7 +15,7 @@ export class RegisterComponent {
     constructor(
         private router: Router,
         private userService: UserService) { }//,
-        //private alertService: AlertService) { }
+        private alertService: AlertService) { }
 
     register() {
         this.loading = true;
