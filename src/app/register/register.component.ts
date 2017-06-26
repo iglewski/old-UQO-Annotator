@@ -14,7 +14,7 @@ export class RegisterComponent {
 
     constructor(
         private router: Router,
-        private userService: UserService) { }//,
+        private userService: UserService,
         private alertService: AlertService) { }
 
     register() {
@@ -26,7 +26,7 @@ export class RegisterComponent {
                     this.router.navigate(['/login']);
                 },
                 error => {
-                 //   this.alertService.error(error);
+                    this.alertService.error(error);
                     this.loading = false;
                 });
     }
