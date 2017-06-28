@@ -1,7 +1,7 @@
 {
-  "name": "sb-admin-angular4-bootstrap4",
+  "name": "UQO-annotator-client",
   "version": "1.0.0",
-  "license": "MIT",
+  "license": "ISC",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --ec=true",

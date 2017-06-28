@@ -12,6 +12,7 @@
 
 # dependencies
 /node_modules
+/sever/node_modules
 
 # IDEs and editors
 /.idea
