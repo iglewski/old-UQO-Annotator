@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
+    moduleId: module.id,
     selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss']
+    templateUrl: 'app.component.html'
 })
-export class AppComponent {
 
+export class AppComponent {
+/*
     constructor(private translate: TranslateService) {
         translate.addLangs(['en', 'fr', 'ur']);
         translate.setDefaultLang('en');
@@ -16,9 +16,6 @@ export class AppComponent {
         const browserLang = translate.getBrowserLang();
         translate.use(browserLang.match(/en|fr|ur/) ? browserLang : 'en');
     }
-    toggleSidebar() {
-        const dom: any = document.querySelector('body');
-        dom.classList.toggle('push-right');
-    }
+*/
 }
 
