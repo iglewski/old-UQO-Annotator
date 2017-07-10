@@ -6,7 +6,8 @@ var Q = require('q');
 var mongo = require('mongoskin');
 var db = mongo.db(config.connectionString, { native_parser: true });
 db.bind('users');
-
+var fs = require('fs');
+var path = require('path');
 var service = {};
 
 service.authenticate = authenticate;
@@ -15,7 +16,7 @@ service.getById = getById;
 service.create = create;
 service.update = update;
 service.delete = _delete;
-
+service.fileList = fileList;
 module.exports = service;
 
 function authenticate(username, password) {
@@ -177,4 +178,7 @@ function _delete(_id) {
     });
 
   return deferred.promise;
+}
+function fileList(){
+    
 }
