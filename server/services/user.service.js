@@ -7,7 +7,6 @@ var mongo = require('mongoskin');
 var db = mongo.db(config.connectionString, { native_parser: true });
 db.bind('users');
 var fs = require('fs');
-var path = require('path');
 var service = {};
 
 service.authenticate = authenticate;
@@ -179,6 +178,21 @@ function _delete(_id) {
 
   return deferred.promise;
 }
-function fileList(){
-    
+'use strict';
+function fileList(dir){
+    var deferred = Q.defer();
+        fileList = fileList || [];
+ 
+    var files = fs.readdirSync(dir);
+    for(var i in files){
+        if (!files.hasOwnProperty(i)) continue;
+        var name = dir+'/'+files[i];
+        //if (fs.statSync(name).isDirectory()){
+           fileList.push(name);
+        //} else {
+        //    fileList.push(name);
+        //}
+    }
+    deferred.resolve(fileList);
+    return deferred.promise;;
 }
