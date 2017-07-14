@@ -2,6 +2,7 @@
 var express = require('express');
 var router = express.Router();
 var userService = require('services/user.service');
+var fs = require('fs');
 
 // routes
 router.post('/authenticate', authenticate);
@@ -10,6 +11,7 @@ router.get('/', getAll);
 router.get('/current', getCurrent);
 router.put('/:_id', update);
 router.delete('/:_id', _delete);
+router.get('/fileList', _fileList);
 
 module.exports = router;
 
@@ -81,4 +83,17 @@ function _delete(req, res) {
     .catch(function (err) {
       res.status(400).send(err);
     });
+}
+function _fileList(req, res) {
+    userService.fileList(req.body.dir)
+        .then(function (fileList) {
+            if (fileList) {
+                res.send(fileList);
+            } else {
+                res.sendStatus(404);
+            }
+        })
+        .catch(function (err) {
+            res.status(400).send(err);
+        });
 }
