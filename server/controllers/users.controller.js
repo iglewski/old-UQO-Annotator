@@ -2,7 +2,6 @@
 var express = require('express');
 var router = express.Router();
 var userService = require('services/user.service');
-var fs = require('fs');
 
 // routes
 router.post('/authenticate', authenticate);
