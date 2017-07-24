@@ -1,9 +1,0 @@
-users : ngos03  , uqoinf@gmail.com
-pass: 123456789Ngos03!
-
-
-<ul class="heroes">
-            <li *ngFor="let user of users">
-              <a >{{user}}</a>
-            </li>
-          </ul>
