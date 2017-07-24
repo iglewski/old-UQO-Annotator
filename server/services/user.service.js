@@ -43,20 +43,9 @@ function authenticate(username, password) {
 }
 
 function getAll() {
-  var deferred = Q.defer();
-
-  db.users.find().toArray(function (err, users) {
-    if (err) deferred.reject(err.name + ': ' + err.message);
-
-    // return users (without hashed passwords)
-    users = _.map(users, function (user) {
-      return _.omit(user, 'hash');
-    });
-
-    deferred.resolve(users);
-  });
-
-  return deferred.promise;
+    var deferred = Q.defer();
+    deferred.resolve(getFiles('data'));
+    return deferred.promise;
 }
 
 function getById(_id) {
