@@ -43,3 +43,4 @@ testem.log
 .DS_Store
 Thumbs.db
 src/app/login/login.component.scss
+server/node_modules/.bin/sshpk-conv
