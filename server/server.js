@@ -50,4 +50,4 @@ function getFiles(dir, fileList){
     }
     return fileList;
 }
-console.log(getFiles('data/pico1'));
+console.log(getFiles('data'));
