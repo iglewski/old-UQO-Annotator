@@ -50,4 +50,3 @@ function getFiles(dir, fileList){
     }
     return fileList;
 }
-console.log(getFiles('data'));
