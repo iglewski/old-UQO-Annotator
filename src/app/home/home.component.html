@@ -11,7 +11,7 @@
         <div class="col-xs-8 col-sm-6">
           <ul class="heroes">
             <li *ngFor="let file of files">
-              <a >{{file}}</a>
+              <a (click)="readfile(file)">{{file}}</a>
             </li>
           </ul>
         </div>
