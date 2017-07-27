@@ -16,7 +16,7 @@ service.getById = getById;
 service.create = create;
 service.update = update;
 service.delete = _delete;
-
+service.readpico= readpico;
 
 module.exports = service;
 
@@ -42,6 +42,18 @@ function authenticate(username, password) {
     });
 
     return deferred.promise;
+}
+function readpico(path){
+    var deferred = Q.defer();
+    fs.readFile(path, "utf8", function(error, text) {
+    if (err) {
+        deferred.reject(err.name + ': ' + err.message);
+    }else{
+         deferred.resolve(text);
+     }
+     console.log(text);
+        return deferred.promise;
+});
 }
 'use strict';
 function getFiles(dir, fileList){
