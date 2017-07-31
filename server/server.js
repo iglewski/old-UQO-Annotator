@@ -8,9 +8,29 @@ var config = require('config.json');
 var fs = require('fs');
 var path = require('path');
 
+var cookieParser = require('cookie-parser');
+var logger = require('morgan');
+var routes = require('./routes.js');
+
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+// view engine setup
+  app.set('views', path.join(__dirname, 'views'));
+  app.engine('html', require('ejs').renderFile);
+  app.set('view engine', 'html');
+
+  app.use(logger('dev'));
+  app.use(bodyParser.json());
+  app.use(bodyParser.urlencoded({
+    extended: true
+  }));
+  app.use(cookieParser());
+
+  app.use(express.static(path.join(__dirname, '../src')));
+
+  app.use('/', routes);
 
 // use JWT auth to secure the api, the token can be passed in the authorization header or querystring
 app.use(expressJwt({
@@ -34,19 +54,4 @@ var server = app.listen(port, function () {
     console.log('Server listening on port ' + port);
 });
 // String -> [String]
-'use strict';
-function getFiles(dir, fileList){
-    fileList = fileList || [];
 
-    var files = fs.readdirSync(dir);
-    for(var i in files){
-        if (!files.hasOwnProperty(i)) continue;
-        var name = dir+'/'+files[i];
-        if (fs.statSync(name).isDirectory()){
-            getFiles(name, fileList);
-        } else {
-            fileList.push(name);
-        }
-    }
-    return fileList;
-}
