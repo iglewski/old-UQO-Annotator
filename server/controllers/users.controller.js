@@ -83,12 +83,3 @@ function _delete(req, res) {
             res.status(400).send(err);
         });
 }
-function readpico(req,res){
-    userService.readpico(req)
-        .then(function()){
-            res.sendStatus(200);
-        }
-         .catch(function (err) {
-            res.status(400).send(err);
-        });
-}
