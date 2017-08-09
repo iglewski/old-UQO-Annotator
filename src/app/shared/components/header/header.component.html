@@ -29,13 +29,13 @@
             <li (click)="isCollapsed = true" *ngFor="let rightMenu of rightMenus" routerLinkActive="active" >
               <a [routerLink]="[rightMenu.path]" routerLinkActive="active">
                 <span class="{{rightMenu.icon}}"></span>{{rightMenu.title}}</a>
-              </li>
-              <li (click)="isCollapsed = true" *ngFor="let rightMenuOutlet of rightMenuOutlets" routerLinkActive="active" >
-                <a [routerLink]="[{ outlets: { popup: [rightMenuOutlet.path] } }]" routerLinkActive="active">{{rightMenuOutlet.title}}</a>
-              </li>
-            </ul>
-          </div>
+            </li>
+            <li (click)="isCollapsed = true" *ngFor="let rightMenuOutlet of rightMenuOutlets" routerLinkActive="active" >
+              <a [routerLink]="[{ outlets: { popup: [rightMenuOutlet.path] } }]" routerLinkActive="active">{{rightMenuOutlet.title}}</a>
+            </li>
+          </ul>
         </div>
       </div>
+    </div>
   </nav>
 </div>

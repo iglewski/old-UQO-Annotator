@@ -54,14 +54,14 @@ export function HttpLoaderFactory(http: Http) {
       }
     })
   ],
-    providers: [
-      AuthGuard,
-      AlertService,
-      AuthenticationService,
-      customHttpProvider,
-      DialogService,
-      UserService
-    ],
-    bootstrap: [AppComponent]
+  providers: [
+    AuthGuard,
+    AlertService,
+    AuthenticationService,
+    customHttpProvider,
+    DialogService,
+    UserService
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
