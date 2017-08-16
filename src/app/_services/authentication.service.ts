@@ -7,7 +7,7 @@ import 'rxjs/add/operator/map'
 export class AuthenticationService {
   constructor(private http: Http) { }
 
-  login(username: string, password: string) {
+  login(username: string, password: string): Observable<any> {
     return this.http.post('/users/authenticate', { username: username, password: password })
       .map((response: Response) => {
         // login successful if there's a jwt token in the response
@@ -20,8 +20,16 @@ export class AuthenticationService {
       });
   }
 
-  logout() {
+  logout(): Observable<any> {
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
+    return Observable.create(
+      function(observer){
+        observer.next()
+    });
+  }
+
+  isLoggedIn(){
+    return localStorage.currentUser;
   }
 }

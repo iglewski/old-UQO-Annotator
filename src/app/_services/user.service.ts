@@ -26,4 +26,12 @@ export class UserService {
   delete(_id: string) {
     return this.http.delete('/users/' + _id);
   }
+
+  fileList(file: string) {
+      return this.http.get('/fileList' + file);
+  }
+
+  readfile(file: string){
+    return this.http.get('/readfile' + file);
+  }
 }

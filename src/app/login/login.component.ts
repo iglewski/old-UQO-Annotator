@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { AlertService, AuthenticationService } from '../_services/index';
+import { HeaderComponent } from '../shared/components/header/header.component';
 
 @Component({
   moduleId: module.id,
@@ -33,6 +34,8 @@ export class LoginComponent implements OnInit {
     this.authenticationService.login(this.model.username, this.model.password)
       .subscribe(
         data => {
+          HeaderComponent.isUserLoggedIn = true;
+          HeaderComponent.updateUserStatus.next(true);
           this.router.navigate([this.returnUrl]);
         },
         error => {
