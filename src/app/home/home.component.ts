@@ -78,7 +78,8 @@ export class HomeComponent implements OnInit {
   }
 
   private loadAllfiles() {
-    this.userService.getAll().subscribe(files => { this.files = files; });
+    if (this.currentUser)
+      this.userService.getAll().subscribe(files => { this.files = files; });
   }
 
   logout(){

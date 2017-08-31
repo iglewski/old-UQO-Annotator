@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
         data => {
           HeaderComponent.isUserLoggedIn = true;
           HeaderComponent.updateUserStatus.next(true);
-          this.router.navigate([this.returnUrl]);
+          this.router.navigateByUrl('/');
         },
         error => {
           this.alertService.error(error);

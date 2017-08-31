@@ -11,6 +11,7 @@ import { AuthGuard }          from './_guards/index';
 import { AlertService, AuthenticationService, UserService } from './_services/index';
 import { HeaderComponent }    from './shared';
 import { HomeComponent }      from './home/index';
+import { HomeWelcomeComponent } from './home-welcome/index';
 import { LoginComponent }     from './login/index';
 import { RegisterComponent }  from './register/index';
 
@@ -35,6 +36,7 @@ export function HttpLoaderFactory(http: Http) {
     ComposeMessageComponent,
     HeaderComponent,
     HomeComponent,
+    HomeWelcomeComponent,
     LoginComponent,
     PageNotFoundComponent,
     RegisterComponent
