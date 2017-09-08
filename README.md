@@ -25,17 +25,32 @@ Provides fast, reliable and extensible starter for the development of Angular pr
 ### How to start
 **Note** that this seed project requires  **node >=v6.9.0 and npm >=3**.
 
-In order to start the project use:
-```bash
-$ git clone git@github.com:start-angular/SB-Admin-BS4-Angular-4.git
-$ cd SB-Admin-BS4-Angular-4
-# install the project's dependencies
-$ npm install
-# watches your files and uses livereload by default run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-$ npm start
-# prod build, will output the production application in `dist`
-# the produced code can be deployed (rsynced) to a remote server
-$ npm run build
+# Running the MEAN Stack Server API
+
+### Running MongoDB
+Ensure you have MongoDB installed and running
+
+$ Run mongod 
+#to start mongodb
+
+### Running UQO-Annotator - server 
+Open a command line window and navigate to the "/UQO-Annotator/server" folder below the project root folder
+
+$ Run npm install 
+to install all required npm packages that are defined in the package.json file
+ 
+$ Run node server.js or 
+$ npm start 
+#to start the server, by default it runs at http://localhost:4000
+
+### Running UQO-Annotator - client
+Open a command line window and navigate to the "/UQO-Annotator" folder below the project root folder
+ 
+$Run npm install 
+to install all required npm packages that are defined in the package.json file
+ 
+$Run npm start 
+to start the client, a browser window should automatically open to the application at http://localhost:4200
 ```
 
 ### Code scaffolding
