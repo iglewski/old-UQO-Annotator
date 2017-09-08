@@ -22,7 +22,8 @@ Provides fast, reliable and extensible starter for the development of Angular pr
 - Ahead-of-Time compilation support.
 - Tree-Shaking production builds.
 
-### How to start
+### How to start project
+```
 **Note** that this seed project requires  **node >=v6.9.0 and npm >=3**.
 
 # Running the MEAN Stack Server API
@@ -31,26 +32,28 @@ Provides fast, reliable and extensible starter for the development of Angular pr
 Ensure you have MongoDB installed and running
 
 $ Run mongod 
-#to start mongodb
+# to start mongodb
 
 ### Running UQO-Annotator - server 
 Open a command line window and navigate to the "/UQO-Annotator/server" folder below the project root folder
 
 $ Run npm install 
-to install all required npm packages that are defined in the package.json file
+# to install all required npm packages that are defined in the package.json file
  
-$ Run node server.js or 
-$ npm start 
-#to start the server, by default it runs at http://localhost:4000
+$ Run node server.js 
+# or 
+$ Run npm start 
+# to start the server, by default it runs at http://localhost:4000
 
 ### Running UQO-Annotator - client
 Open a command line window and navigate to the "/UQO-Annotator" folder below the project root folder
  
-$Run npm install 
-to install all required npm packages that are defined in the package.json file
+$ Run npm install 
+# to install all required npm packages that are defined in the package.json file
  
-$Run npm start 
-to start the client, a browser window should automatically open to the application at http://localhost:4200
+$ Run npm start 
+# to start the client, a browser window should automatically open to the application at http://localhost:4200
+
 ```
 
 ### Code scaffolding
