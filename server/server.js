@@ -12,6 +12,10 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var routes = require('./routes.js');
 
+var passport       = require('passport');
+var passportConfig = require('./config/passport'); // all passport configuration and provider logic
+var session        = require('express-session');
+
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -31,6 +35,9 @@ app.use(bodyParser.json());
   app.use(express.static(path.join(__dirname, '../src')));
 
   app.use('/', routes);
+
+  app.use(passport.initialize());
+  app.use(passport.session());
 
 // use JWT auth to secure the api, the token can be passed in the authorization header or querystring
 app.use(expressJwt({
@@ -54,4 +61,11 @@ var server = app.listen(port, function () {
     console.log('Server listening on port ' + port);
 });
 // String -> [String]
-
+// Production error handler will not leak stacktrace to user
+app.use(function(err, req, res, next) {
+  res.status(err.status || 500);
+  res.render('error', {
+    message: err.message,
+    error: {}
+  });
+});
