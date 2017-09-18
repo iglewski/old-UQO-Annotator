@@ -1,17 +1,23 @@
-﻿import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 
-import { HomeComponent } from './home/index';
-import { LoginComponent } from './login/index';
-import { RegisterComponent } from './register/index';
 import { AuthGuard } from './_guards/index';
+import { ComposeMessageComponent } from './compose-message.component';
+import { HomeComponent } from './home/index';
+import { HomeWelcomeComponent } from './home-welcome/index';
+import { LoginComponent } from './login/index';
+import { PageNotFoundComponent } from './not-found.component';
+import { RegisterComponent } from './register/index';
 
 const appRoutes: Routes = [
-    { path: '', component: HomeComponent, canActivate: [AuthGuard] },
-    { path: 'login', component: LoginComponent },
-    { path: 'register', component: RegisterComponent },
-
-    // otherwise redirect to home
-    { path: '**', redirectTo: '' }
+  { path: 'welcome', component: HomeWelcomeComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'compose', component: ComposeMessageComponent, outlet: 'popup' },
+  { path: 'logout', component: HomeWelcomeComponent },
+  { path: '', component: HomeComponent, pathMatch: 'full', canActivate: [AuthGuard] },
+  { path: '', component: HomeWelcomeComponent, pathMatch: 'full' },
+  // otherwise page not found
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);
