@@ -13,7 +13,7 @@ var logger = require('morgan');
 var routes = require('./routes.js');
 
 var passport       = require('passport');
-var passportConfig = require('./config/passport'); // all passport configuration and provider logic
+//var passportConfig = require('./config/passport'); // all passport configuration and provider logic
 var session        = require('express-session');
 
 app.use(cors());
