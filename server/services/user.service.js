@@ -59,7 +59,6 @@ function readpico(path){
 'use strict';
 function getFiles(dir, fileList){
     fileList = fileList || [];
- 
 
     var files = fs.readdirSync(dir);
     for(var i in files){
