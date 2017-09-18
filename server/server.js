@@ -38,7 +38,6 @@ app.use(bodyParser.json());
 
   app.use(passport.initialize());
   app.use(passport.session());
-
 // use JWT auth to secure the api, the token can be passed in the authorization header or querystring
 app.use(expressJwt({
     secret: config.secret,
@@ -61,11 +60,4 @@ var server = app.listen(port, function () {
     console.log('Server listening on port ' + port);
 });
 // String -> [String]
-// Production error handler will not leak stacktrace to user
-app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
-  res.render('error', {
-    message: err.message,
-    error: {}
-  });
-});
+
