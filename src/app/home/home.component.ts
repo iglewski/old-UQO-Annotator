@@ -1,10 +1,12 @@
-﻿import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
+import { AuthenticationService } from '../_services/index';
+import { HeaderComponent } from '../shared/components/header/header.component';
 import { User } from '../_models/index';
 import { UserService } from '../_services/index';
 
 @Component({
-    moduleId: module.id,
+  moduleId: module.id,
     templateUrl: 'home.component.html',
     styles: [`
     .selected {
@@ -58,24 +60,30 @@ import { UserService } from '../_services/index';
 })
 
 export class HomeComponent implements OnInit {
-    currentUser: User;
-    users: User[] = [];
-    files: File[]=[];
-    constructor(private userService: UserService) {
-        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    }
+  currentUser: User;
+  users: User[] = [];
+  files: File[]=[];
 
-    ngOnInit() {
+  constructor(private userService: UserService,
+    private authenticationService: AuthenticationService) {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  }
+
+  ngOnInit() {
         this.loadAllfiles();
-    }
+  }
 
-    deleteUser(_id: string) {
+  deleteUser(_id: string) {
         this.userService.delete(_id);
-    }
+  }
 
-    private loadAllfiles() {
-        this.userService.getAll().subscribe(files => { this.files = files; });
-    }
+  private loadAllfiles() {
+    if (this.currentUser)
+      this.userService.getAll().subscribe(files => { this.files = files; });
+  }
 
-     
+  logout(){
+    this.authenticationService.logout();
+  }
+
 }
