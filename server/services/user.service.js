@@ -55,10 +55,12 @@ function readpico(path){
         return deferred.promise;
 });
 }
+
 'use strict';
 function getFiles(dir, fileList){
     fileList = fileList || [];
  
+
     var files = fs.readdirSync(dir);
     for(var i in files){
         if (!files.hasOwnProperty(i)) continue;
@@ -71,21 +73,23 @@ function getFiles(dir, fileList){
     }
     return fileList;
 }
-'use strict';
-function getFilesdir(dir, fileList){
-    fileList = fileList || [];
 
-    var files = fs.readdirSync(dir);
-    for(var i in files){
-        if (!files.hasOwnProperty(i)) continue;
-        var name = dir+'/'+files[i];
-        if (fs.statSync(name).isDirectory()){
-            getFiles(name, fileList);
-        } else {
-            fileList.push(name);
-        }
+'use strict';
+function getFilesdir(dir, fileList){alert(1);
+  fileList = fileList || [];
+
+  var files = fs.readdirSync(dir);
+  for (var i in files){
+    if (!files.hasOwnProperty(i)) continue;
+    var name = dir+'/'+files[i];
+    if (fs.statSync(name).isDirectory()){
+      getFiles(name, fileList);
     }
-    return fileList;
+    else {
+      fileList.push(name);
+    }
+  }
+  return fileList;
 }
 
 function getAll() {
