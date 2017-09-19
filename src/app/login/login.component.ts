@@ -5,6 +5,7 @@ import { AlertService, AuthenticationService } from '../_services/index';
 import { HeaderComponent } from '../shared/components/header/header.component';
 
 import { Inject } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   moduleId: module.id,
@@ -47,10 +48,17 @@ export class LoginComponent implements OnInit {
       });
   }
   openhWindowAuth(provider: string){
-
-    var newWindow = window.open(`${this._apiBase}/authorize/${provider}`, 'name', 'height=585, width=770');
+    var newWindow = window.open(`${this._apiBase}/auth/${provider}`, 'name', 'height=585, width=770');
      if (window.focus) {
        newWindow.focus();
      }
+      let source = Observable.interval(200000)
+      .map(() => {
+         
+          newWindow.close();
+        
+    })
+
+     
   }
 }
