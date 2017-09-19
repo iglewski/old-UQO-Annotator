@@ -44,6 +44,6 @@ testem.log
 Thumbs.db
 src/app/login/login.component.scss
 server/node_modules/.bin/sshpk-conv
-*.txt
+data/
 server/node_modules/
 node_modules/
