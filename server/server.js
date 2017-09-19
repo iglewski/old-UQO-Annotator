@@ -1,4 +1,4 @@
-﻿require('rootpath')();
+require('rootpath')();
 var express = require('express');
 var app = express();
 var cors = require('cors');
@@ -12,14 +12,14 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var routes = require('./routes.js');
 
-var passport       = require('passport');
+var passport = require('passport');
+var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 //var passportConfig = require('./config/passport'); // all passport configuration and provider logic
 var session        = require('express-session');
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
 // view engine setup
   app.set('views', path.join(__dirname, 'views'));
   app.engine('html', require('ejs').renderFile);
@@ -38,18 +38,43 @@ app.use(bodyParser.json());
 
   app.use(passport.initialize());
   app.use(passport.session());
-// use JWT auth to secure the api, the token can be passed in the authorization header or querystring
-app.use(expressJwt({
-    secret: config.secret,
-    getToken: function (req) {
-        if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
-            return req.headers.authorization.split(' ')[1];
-        } else if (req.query && req.query.token) {
-            return req.query.token;
-        }
-        return null;
-    }
-}).unless({ path: ['/users/authenticate', '/users/register'] }));
+
+
+// Use the GoogleStrategy within Passport.
+//   Strategies in Passport require a `verify` function, which accept
+//   credentials (in this case, an accessToken, refreshToken, and Google
+//   profile), and invoke a callback with a user object.
+passport.use(new GoogleStrategy({
+    clientID: "1070049223644-s77ag743cgjbr6cmqhu28lngjiq184sg.apps.googleusercontent.com",
+    clientSecret: "tBp2wDg0Ephmyvn20_JZa-Rm",
+    callbackURL: "http://localhost:4000/auth/google/callback"
+  },
+  function(accessToken, refreshToken, profile, done) {
+       User.findOrCreate({ googleId: profile.id }, function (err, user) {
+         return done(err, user);
+       });
+  }
+));
+
+//----
+// GET /auth/google
+//   Use passport.authenticate() as route middleware to authenticate the
+//   request.  The first step in Google authentication will involve
+//   redirecting the user to google.com.  After authorization, Google
+//   will redirect the user back to this application at /auth/google/callback
+app.get('/auth/google',
+  passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/plus.login'] }));
+
+// GET /auth/google/callback
+//   Use passport.authenticate() as route middleware to authenticate the
+//   request.  If authentication fails, the user will be redirected back to the
+//   login page.  Otherwise, the primary route function function will be called,
+//   which, in this example, will redirect the user to the home page.
+app.get('/auth/google/callback', 
+  passport.authenticate('google', { failureRedirect: '/login' }),
+  function(req, res) {
+    res.redirect('/');
+  });
 
 // routes
 app.use('/users', require('./controllers/users.controller'));
