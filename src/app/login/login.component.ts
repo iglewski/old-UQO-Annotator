@@ -4,6 +4,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AlertService, AuthenticationService } from '../_services/index';
 import { HeaderComponent } from '../shared/components/header/header.component';
 
+import { Inject } from '@angular/core';
+
 @Component({
   moduleId: module.id,
   templateUrl: 'login.component.html'
@@ -18,7 +20,8 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private authenticationService: AuthenticationService,
-    private alertService: AlertService) {
+    private alertService: AlertService,
+    @Inject('apiBase') private _apiBase: string) {
   }
 
   ngOnInit() {
@@ -42,5 +45,12 @@ export class LoginComponent implements OnInit {
           this.alertService.error(error);
           this.loading = false;
       });
+  }
+  openhWindowAuth(provider: string){
+
+    var newWindow = window.open(`${this._apiBase}/authorize/${provider}`, 'name', 'height=585, width=770');
+     if (window.focus) {
+       newWindow.focus();
+     }
   }
 }
