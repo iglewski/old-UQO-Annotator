@@ -62,7 +62,8 @@ export function HttpLoaderFactory(http: Http) {
     AuthenticationService,
     customHttpProvider,
     DialogService,
-    UserService
+    UserService,
+    {provide: 'apiBase', useValue: 'http://localhost:4000'}
   ],
   bootstrap: [AppComponent]
 })
