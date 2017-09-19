@@ -1,44 +1,43 @@
 import { Component, OnInit } from '@angular/core';
-import {TranslateService} from '@ngx-translate/core';
-import { ROUTES } from './header-routes.config';
-import { MenuType } from './header.metadata';
+import { Subject } from 'rxjs/Subject';
+import { TranslateService } from '@ngx-translate/core';
 
+import { AlertService, AuthenticationService } from '../../../_services/index';
 
 @Component({
-    selector: 'app-header',
-    templateUrl: './header.component.html',
-    styleUrls: ['./header.component.scss']
-    
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.scss']
 })
+
 export class HeaderComponent implements OnInit {
-    public leftMenus: any[];
-    public rightMenus: any[];
-    public rightMenuOutlets: any[];
-    isCollapsed = true;
-    constructor(private translate: TranslateService) { }
+  isCollapsed = true;
+  username;
+  public static isUserLoggedIn:boolean = false;
+  public static updateUserStatus: Subject<boolean> = new Subject();
 
-    ngOnInit() {
-        this.leftMenus = ROUTES.filter(menuItem => menuItem.menuType === MenuType.LEFT);
-        this.rightMenus = ROUTES.filter(menuItem => menuItem.menuType === MenuType.RIGHT);
-        this.rightMenuOutlets = ROUTES.filter(menuItem => menuItem.menuType === MenuType.OUTLETRIGHT);
-    }
+  constructor(private _authService: AuthenticationService, private translate: TranslateService) {
+    HeaderComponent.updateUserStatus.subscribe(res => {
+      var cU = localStorage.getItem('currentUser');
+      this.username = cU == null ? '' : JSON.parse(cU).username;
+    })
+  }
 
+  ngOnInit() {
+  }
 
-    toggleSidebar() {
-        const dom: any = document.querySelector('body');
-        dom.classList.toggle('push-right');
-    }
+  logout() {
+    this._authService.logout().subscribe(
+      data => {
+        HeaderComponent.isUserLoggedIn = false;
+      });
+  }
 
-    rltAndLtr() {
-        const dom: any = document.querySelector('body');
-        dom.classList.toggle('rtl');
-    }
+  changeLang(language: string) {
+    this.translate.use(language);
+  }
 
-    onLoggedout() {
-        localStorage.removeItem('isLoggedin');
-    }
-
-    changeLang(language: string) {
-        this.translate.use(language);
-    }
+  isUser(){
+    return HeaderComponent.isUserLoggedIn;
+  }
 }
