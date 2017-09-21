@@ -4,7 +4,7 @@ import { AuthenticationService } from '../_services/index';
 import { HeaderComponent } from '../shared/components/header/header.component';
 import { User } from '../_models/index';
 import { UserService } from '../_services/index';
-
+import { FsService } from '../_services/index';
 @Component({
   moduleId: module.id,
     templateUrl: 'home.component.html',
@@ -62,24 +62,31 @@ import { UserService } from '../_services/index';
 export class HomeComponent implements OnInit {
   currentUser: User;
   users: User[] = [];
+  corpus: File[]=[];
   files: File[]=[];
 
   constructor(private userService: UserService,
+    private fsService: FsService,
     private authenticationService: AuthenticationService) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
   ngOnInit() {
-        this.loadAllfiles();
+        this.loadAllCorpus();
   }
 
   deleteUser(_id: string) {
         this.userService.delete(_id);
   }
 
-  private loadAllfiles() {
+  private loadAllCorpus() {
     if (this.currentUser)
-      this.userService.getAll().subscribe(files => { this.files = files; });
+      this.fsService.getCorpus().subscribe(corpus => { this.corpus = corpus; });
+  }
+  private loadAllFilesCorpus(Corpus: string) {
+    //if (this.currentUser)
+     this.fsService.getFilesCorpus(Corpus).subscribe(files => { this.files = files; });;
+     console.log(Corpus);
   }
 
   logout(){
