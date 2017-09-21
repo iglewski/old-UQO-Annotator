@@ -5,11 +5,25 @@
     <div class="col-sm-9">
       <div class="row">
         <div class="col-xs-8 col-sm-6">
-          <ul class="heroes">
-            <li *ngFor="let file of files">
-              <a (click)="readfile(file)">{{file}}</a>
-            </li>
-          </ul>
+        <table>
+           <tr>
+               <th>
+                <ul class="heroes">
+                  <li *ngFor="let file of corpus">
+                    <a (click)="loadAllFilesCorpus(file)">{{file}}</a>
+                  </li>
+                </ul>
+               </th>
+               <td>
+                <ul class="heroes">
+                  <li *ngFor="let file of files">
+                    <a>{{file}}</a>
+                  </li>
+                </ul>
+               </td>
+               
+           </tr>
+        </table>
         </div>
         <div class="col-xs-4 col-sm-6">
           <router-outlet name="files-view"></router-outlet>
