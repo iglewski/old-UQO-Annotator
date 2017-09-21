@@ -16,6 +16,7 @@ var passport = require('passport');
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 //var passportConfig = require('./config/passport'); // all passport configuration and provider logic
 var session        = require('express-session');
+var TwitterStrategy = require('passport-twitter').Strategy;
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -39,6 +40,18 @@ app.use(bodyParser.json());
   app.use(passport.initialize());
   app.use(passport.session());
 
+/**
+ * These can be (may be in the future) more complex
+ * if need be. Depends on how you are handling authentication
+ * and serialization
+ */
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(obj, done) {
+  done(null, obj);
+});
 
 // Use the GoogleStrategy within Passport.
 //   Strategies in Passport require a `verify` function, which accept
@@ -47,7 +60,8 @@ app.use(bodyParser.json());
 passport.use(new GoogleStrategy({
     clientID: "1070049223644-s77ag743cgjbr6cmqhu28lngjiq184sg.apps.googleusercontent.com",
     clientSecret: "tBp2wDg0Ephmyvn20_JZa-Rm",
-    callbackURL: "http://localhost:4000/auth/google/callback"
+    callbackURL: "http://localhost:4000/auth/google/callback",
+    passReqToCallback   : true
   },
   function(accessToken, refreshToken, profile, done) {
        User.findOrCreate({ googleId: profile.id }, function (err, user) {
@@ -73,11 +87,16 @@ app.get('/auth/google',
 app.get('/auth/google/callback', 
   passport.authenticate('google', { failureRedirect: '/login' }),
   function(req, res) {
+    console.log("google is authentication");
     res.redirect('/');
   });
 
-// routes
+// routes users
 app.use('/users', require('./controllers/users.controller'));
+// routes file system
+app.use('/fs', require('./controllers/fs.controller'));
+// routes passport
+app.use('/passport', require('./controllers/passport.controller'));
 
 // start server
 var port = process.env.NODE_ENV === 'production' ? 80 : 4000;
