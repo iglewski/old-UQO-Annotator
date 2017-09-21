@@ -9,8 +9,8 @@
            <tr>
                <th>
                 <ul class="heroes">
-                  <li *ngFor="let file of corpus">
-                    <a (click)="loadAllFilesCorpus(file)">{{file}}</a>
+                  <li (click)="loadAllFilesCorpus(file)" *ngFor="let file of corpus">
+                    <a >{{file}}</a>
                   </li>
                 </ul>
                </th>
