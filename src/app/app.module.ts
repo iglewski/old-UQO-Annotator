@@ -23,7 +23,7 @@ import { DialogService }           from './dialog.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-
+import { ProjectComponent }       from './project/index';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: Http) {
@@ -40,7 +40,8 @@ export function HttpLoaderFactory(http: Http) {
     HomeWelcomeComponent,
     LoginComponent,
     PageNotFoundComponent,
-    RegisterComponent
+    RegisterComponent,
+    ProjectComponent
   ],
   imports: [
     BrowserAnimationsModule,
