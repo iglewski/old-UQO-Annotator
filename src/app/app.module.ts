@@ -8,7 +8,7 @@ import { routing }            from './app.routing';
 import { customHttpProvider } from './_helpers/index';
 import { AlertComponent }     from './_directives/index';
 import { AuthGuard }          from './_guards/index';
-import { AlertService, AuthenticationService, UserService } from './_services/index';
+import { AlertService, AuthenticationService, UserService, FsService } from './_services/index';
 import { HeaderComponent }    from './shared';
 import { HomeComponent }      from './home/index';
 import { HomeWelcomeComponent } from './home-welcome/index';
@@ -23,6 +23,7 @@ import { DialogService }           from './dialog.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: Http) {
@@ -63,6 +64,7 @@ export function HttpLoaderFactory(http: Http) {
     customHttpProvider,
     DialogService,
     UserService,
+    FsService,
     {provide: 'apiBase', useValue: 'http://localhost:4000'}
   ],
   bootstrap: [AppComponent]
