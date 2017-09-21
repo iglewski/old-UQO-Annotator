@@ -17,7 +17,7 @@
                <td>
                 <ul class="heroes">
                   <li *ngFor="let file of files">
-                    <a>{{file}}</a>
+                    <a [routerLink]="['/project']">{{file}}</a>
                   </li>
                 </ul>
                </td>
