@@ -32,7 +32,7 @@ function getCorpus() {
 }
 //this is service to get list files a Corpus
 function FilesCorpus(_Corpus) {
-    console.log("GET"+_Corpus);//test if the file is correct
+    console.log("GET"+_Corpus);//test if the file is send on server
     var deferred = Q.defer();
     deferred.resolve(getDir('data/'+_Corpus));
     return deferred.promise;
