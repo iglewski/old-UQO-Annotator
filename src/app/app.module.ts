@@ -8,7 +8,7 @@ import { routing }            from './app.routing';
 import { customHttpProvider } from './_helpers/index';
 import { AlertComponent }     from './_directives/index';
 import { AuthGuard }          from './_guards/index';
-import { AlertService, AuthenticationService, UserService, FsService } from './_services/index';
+import { AlertService, AuthenticationService, UserService, FsService, articlesService } from './_services/index';
 import { HeaderComponent }    from './shared';
 import { HomeComponent }      from './home/index';
 import { HomeWelcomeComponent } from './home-welcome/index';
@@ -66,6 +66,7 @@ export function HttpLoaderFactory(http: Http) {
     DialogService,
     UserService,
     FsService,
+    articlesService,
     {provide: 'apiBase', useValue: 'http://localhost:4000'}
   ],
   bootstrap: [AppComponent]
