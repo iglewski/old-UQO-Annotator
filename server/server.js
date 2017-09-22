@@ -97,7 +97,8 @@ app.use('/users', require('./controllers/users.controller'));
 app.use('/fs', require('./controllers/fs.controller'));
 // routes passport
 app.use('/passport', require('./controllers/passport.controller'));
-
+//routes articles
+app.use('/articles', require('./controllers/articles.controller'));
 // start server
 var port = process.env.NODE_ENV === 'production' ? 80 : 4000;
 var server = app.listen(port, function () {
