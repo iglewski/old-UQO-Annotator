@@ -93,4 +93,8 @@ export class HomeComponent implements OnInit {
     this.authenticationService.logout();
   }
 
+  linkStockage(_link: string){
+    localStorage.setItem('linkProject',JSON.stringify(_link));
+  }
+
 }
