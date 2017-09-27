@@ -12,12 +12,11 @@ module.exports = router;
 
 //read project uima
 function uimaText(req, res){
-    console.log("UIMA SERVICE "+req.params._link);
-    uimaService.uimaText(req.params._link)
-        .then(function (articles) { 
-        	console.log("service = "+articles);
+    console.log("UIMA SERVICE "+req.params[0]);
+    uimaService.uimaText(req.params[0]+"/"+req.params._link)
+        .then(function (articles) {
+        	//console.log("service = "+articles);
             res.send(articles);
-           
         })
         .catch(function (err) {
             res.status(400).send(err);

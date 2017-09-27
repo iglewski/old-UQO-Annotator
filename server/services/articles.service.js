@@ -16,7 +16,8 @@ service.uimaText = uimaText;
 module.exports = service;
 //---------
 function readDoc(_fileTxt){
-	var txt = fs.readFileSync('data/Corpus1/'+_fileTxt, 'utf8');// in process
+	console.log("readDoc "+ _fileTxt);
+	var txt = fs.readFileSync('data/'+_fileTxt, 'utf8');// in process
 	var data=txt.toString();
 	console.log(data);
 	return data;
