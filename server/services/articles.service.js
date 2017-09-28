@@ -3,13 +3,13 @@ var Q = require('q');
 var fs = require('fs');
 var path = require('path');
 var service = {};
-var Ecore = require('ecore/dist/ecore.xmi');
-var parse = require('xml-parser');
+//var Ecore = require('ecore/dist/ecore.xmi');
+//var parse = require('xml-parser');
  
-var inspect = require('util').inspect;
-var parser = require('xml2json');
-var Regex = require("regex");
-var regex = new Regex("/^[a-zA-Z0-9]+$/");
+//var inspect = require('util').inspect;
+//var parser = require('xml2json');
+//var Regex = require("regex");
+//var regex = new Regex("/^[a-zA-Z0-9]+$/");
 
 service.uimaText = uimaText;
 
