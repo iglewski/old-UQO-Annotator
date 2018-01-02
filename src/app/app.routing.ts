@@ -10,7 +10,7 @@ import { RegisterComponent } from './register/index';
 import { ProjectComponent }       from './project/index';
 
 const appRoutes: Routes = [
-  { path: 'welcome', component: HomeWelcomeComponent },
+  { path: 'welcome', component: HomeWelcomeComponent, pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'compose', component: ComposeMessageComponent, outlet: 'popup' },
