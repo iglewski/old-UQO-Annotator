@@ -9,16 +9,14 @@ import { customHttpProvider } from './_helpers/index';
 import { AlertComponent }     from './_directives/index';
 import { AuthGuard }          from './_guards/index';
 import { AlertService, AuthenticationService, UserService, FsService, articlesService } from './_services/index';
-import { HeaderComponent }    from './shared';
+import { HeaderComponent }    from './shared/components';
 import { HomeComponent }      from './home/index';
 import { HomeWelcomeComponent } from './home-welcome/index';
 import { LoginComponent }     from './login/index';
 import { RegisterComponent }  from './register/index';
 
 import { HeroesModule }            from './heroes/heroes.module';
-import { ComposeMessageComponent } from './compose-message.component';
-import { PageNotFoundComponent }   from './not-found.component';
-import { DialogService }           from './dialog.service';
+import { NotFoundComponent }   from './not-found/not-found.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -34,12 +32,11 @@ export function HttpLoaderFactory(http: Http) {
   declarations: [
     AlertComponent,
     AppComponent,
-    ComposeMessageComponent,
     HeaderComponent,
     HomeComponent,
     HomeWelcomeComponent,
     LoginComponent,
-    PageNotFoundComponent,
+    NotFoundComponent,
     RegisterComponent,
     ProjectComponent
   ],
@@ -63,7 +60,6 @@ export function HttpLoaderFactory(http: Http) {
     AlertService,
     AuthenticationService,
     customHttpProvider,
-    DialogService,
     UserService,
     FsService,
     articlesService,
